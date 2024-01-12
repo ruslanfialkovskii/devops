@@ -1,0 +1,89 @@
+# Mappings:
+# - associative arrays, hash tables, key-value pairs, collection
+# - denoted with a colon and a space ":"
+# - no duplicate keys
+# - mappings can be nested
+
+# example:
+host: phl-42
+datacenter:
+  location: usa
+  cab: 13
+
+# Flow styles:
+# - use curly brackets and commas 
+datacenters: {location: usa, cab: 12}
+
+# Sequencees:
+# - lists, arrays, collections
+# - denoted with a dash and a space "-"
+# - can be combined with mappings
+#   - mapping of sequences 
+#   - sequence of mappings
+# Sequences cann't be blank or nested without mapping
+
+
+# example mapping of sequence
+roles:
+  - webserver
+  - database
+
+# example sequence of mapping 
+data:
+  - local:
+    mode: 1
+    option: test
+  - remote:
+    mode: 2
+    option: test
+
+# flow style
+people: [ Jone, James ]
+
+# Scalars:
+# strings, number, boolean. Whitespace permitted.
+# use quotes to convert non-string to string scalar
+# multiple scalars 
+
+# example multiple scalars
+downtime_sch: |
+  kernel upgrade
+  secutity fix
+
+comments: >
+  experiencing
+  current inverstigating.
+
+# Structure
+# triple dashes "---" to start of a file
+# triple dots "..." to mark the end 
+
+# Comments define with "#"
+
+# Tags used for 
+# - setting a custome uri
+# - setting local tags
+# - setting a data type
+# Set a URI:
+# %TAG ! tag:hostsdata:phl:
+
+# Anchors:
+# store and reuse data
+# anchor name can be reused
+# define anchor with &
+# reference anchor use *
+# anchor a single scalar
+
+#Examples
+---
+data:
+  local: &PHL London
+---
+data:
+  local: *PHL
+---
+roles: &wphosts
+  - webserver
+  - database
+---
+roles: *wphosts
